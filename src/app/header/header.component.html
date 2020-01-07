@@ -1,0 +1,16 @@
+<div class="row p-3">
+  <div class="col-12 col-md-6">
+    <a 
+      class="btn btn-info"
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: false}"><i class="fas fa-home"></i> Home</a> &nbsp;
+    <a 
+      class="btn btn-info"
+      routerLink="/current"
+      routerLinkActive="active"><i class="fas fa-hourglass-start"></i> Current Special</a>
+  </div>
+  <div class="col-12 col-md-6">
+    <span class="float-right">{{ myDate | date:'MMM d, y'}}</span>
+  </div>
+</div>
