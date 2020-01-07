@@ -1,0 +1,13 @@
+::ng-deep .card, ::ng-deep .card .card-header {
+  border-color: #17a2b8;
+}
+::ng-deep .card .card-header {
+  background-color: #fff;
+}
+::ng-deep .card .card-header button {
+  color: #17a2b8;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  font-size: 1.5rem;
+}

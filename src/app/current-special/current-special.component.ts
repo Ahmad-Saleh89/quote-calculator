@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentSpecialComponent implements OnInit {
 
+  currentMonth = new Date();
+
   constructor() { }
 
   ngOnInit() {
