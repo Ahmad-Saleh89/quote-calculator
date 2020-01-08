@@ -1,11 +1,15 @@
-::ng-deep .card, ::ng-deep .card .card-header {
+::ng-deep .card {
   border-color: #17a2b8;
 }
 ::ng-deep .card .card-header {
-  background-color: #fff;
+  background-color: #17a2b8;
+  border-color: #fff;
+  margin-bottom: 0px !important;
+  padding: 0px;
+  padding-left: 10px;
 }
 ::ng-deep .card .card-header button {
-  color: #17a2b8;
+  color: #fff;
   text-decoration: none;
   width: 100%;
   text-align: left;
