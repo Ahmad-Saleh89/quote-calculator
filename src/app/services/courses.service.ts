@@ -8,7 +8,14 @@ export class CoursesService {
 
   courses = COURSES;
   titles = [];
-  selectedCourses = [];
+
+  optionOne = [];
+  optionTwo = [];
+  optoinThree = [];
+
+  selectedCourses = [this.optionOne, this.optionTwo, this.optoinThree];
+
+  index = 0;
 
   private selectedCoursesSource = new Subject();
   selectedObs = this.selectedCoursesSource.asObservable();
@@ -22,20 +29,25 @@ export class CoursesService {
     return this.titles;
   }
 
+  chooseOption(x) {
+    this.index = x;
+    console.log(this.index);
+  }
+
   selectCourse(course){
-    for (let val of this.selectedCourses) {
+    for (let val of this.selectedCourses[this.index]) {
       if(course.name === val.name) {
-        this.deleteCourse(this.selectedCourses.indexOf(val));
+        this.deleteCourse(this.selectedCourses[this.index].indexOf(val));
         return;
       }
     }
-    this.selectedCourses.push(course);
+    this.selectedCourses[this.index].push(course);
     this.selectedCoursesSource.next(this.selectedCourses);
     // console.log(this.selectedCourses)
   }
 
   deleteCourse(course) {
-    this.selectedCourses.splice(course, 1)
+    this.selectedCourses[this.index].splice(course, 1)
   }
 
 }

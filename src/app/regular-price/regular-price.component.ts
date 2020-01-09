@@ -9,9 +9,7 @@ import { CoursesService } from '../services/courses.service';
 })
 export class RegularPriceComponent implements OnInit {
 
-  courses = [];
-
-  selectedCourses;
+  selectedCourses = [];
 
   constructor(private courseService: CoursesService) { }
 
@@ -20,5 +18,9 @@ export class RegularPriceComponent implements OnInit {
       this.selectedCourses = data;
       console.log(this.selectedCourses);
     });
+  }
+
+  chooseOption(index) {
+    this.courseService.chooseOption(index);
   }
 }
