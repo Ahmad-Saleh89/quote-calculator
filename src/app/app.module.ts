@@ -13,10 +13,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegularPriceComponent } from './regular-price/regular-price.component';
 import { PaymentPlanComponent } from './home/payment-plan/payment-plan.component';
 import { OptionPanelComponent } from './regular-price/option-panel/option-panel.component';
+import { CoursesService } from './services/courses.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule ],
   declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [CoursesService]
 })
 export class AppModule { }

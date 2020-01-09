@@ -2,18 +2,12 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col col-md-5">
-      <p>You will have up to 3 options to choose from!</p>
-    </div>
-    <div class="col col-md-5">
-        <div ngbDropdown class="d-inline-block float-right">
-          <button class="btn btn-info" id="discount" ngbDropdownToggle><i class="fas fa-percent"></i>&nbsp; Discount</button>
-          <div ngbDropdownMenu aria-labelledby="discount">
-            <button ngbDropdownItem>40%</button>
-            <button ngbDropdownItem>50%</button>
-            <button ngbDropdownItem>60%</button>
-          </div>
-        </div>
+    <div class="col col-md-4 text-center">
+      <select class="form-control d-inline w-75 border-info">
+        <option value="fourty">40% Discount</option>
+        <option value="fifty">50% Discount</option>
+        <option value="sixty">60% Discount</option>
+      </select>
     </div>
   </div><br>
 
