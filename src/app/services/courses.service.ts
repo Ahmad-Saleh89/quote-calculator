@@ -1,11 +1,26 @@
 import { Injectable } from '@angular/core';
+import { COURSES } from '../data/courses';
+import { Subject } from 'rxjs';
+
 
 @Injectable()
 export class CoursesService {
 
+  courses = COURSES;
+  titles = [];
   selectedCourses = [];
 
+  private selectedCoursesSource = new Subject();
+  selectedObs = this.selectedCoursesSource.asObservable();
+
   constructor() { }
+
+  getTitles() {
+    for( const course of this.courses) {
+      this.titles.push(...Object.keys(course));
+    }
+    return this.titles;
+  }
 
   selectCourse(course){
     for (let val of this.selectedCourses) {
@@ -15,7 +30,8 @@ export class CoursesService {
       }
     }
     this.selectedCourses.push(course);
-    console.log(this.selectedCourses)
+    this.selectedCoursesSource.next(this.selectedCourses);
+    // console.log(this.selectedCourses)
   }
 
   deleteCourse(course) {

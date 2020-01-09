@@ -1,28 +1,19 @@
 <div class="card">
   <div class="card-body">
     <ul class="list-group list-group-flush">
-      <li class="list-group-item pl-0 pr-0 d-flex">
+
+      <li class="list-group-item pl-0 pr-0 d-flex" *ngFor="let course of courses">
         <div class="col-5 p-0">
-          Angular
+          {{ course.name }}
         </div>
         <div class="col-5 p-0">
-          <s>$200</s> $150
+          <s>$200</s> {{ course.price | currency }}
         </div>
         <div class="col-2 p-0 text-right">
           <a><i class="fas fa-trash-alt text-danger"></i></a>
         </div>
       </li>
-      <li class="list-group-item pl-0 pr-0 d-flex">
-        <div class="col-5 p-0">
-          Angular
-        </div>
-        <div class="col-5 p-0">
-          <s>$200</s> $150
-        </div>
-        <div class="col-2 p-0 text-right">
-          <a><i class="fas fa-trash-alt text-danger"></i></a>
-        </div>
-      </li>
+
     </ul>
     <br><br>
     <div class="text-center">
