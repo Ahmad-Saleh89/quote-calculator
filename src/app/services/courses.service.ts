@@ -57,8 +57,9 @@ export class CoursesService {
   }
 
   deleteCourse(course) {
-    course.selected = false;
-    this.selectedCourses[this.index].splice(course, 1)
+    course.selected ? course.selected = false : null;
+
+    this.selectedCourses[this.index].splice(course, 1);
   }
 
 }
