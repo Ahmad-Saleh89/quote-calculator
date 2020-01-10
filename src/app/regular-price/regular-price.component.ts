@@ -11,16 +11,19 @@ export class RegularPriceComponent implements OnInit {
 
   selectedCourses = [];
 
+  index = 0;
+
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
     this.courseService.selectedObs.subscribe(data => {
       this.selectedCourses = data;
-      console.log(this.selectedCourses);
+      // console.log(this.selectedCourses);
     });
   }
 
   chooseOption(index) {
+    this.index = index;
     this.courseService.chooseOption(index);
   }
 }

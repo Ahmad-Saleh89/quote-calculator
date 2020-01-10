@@ -10,7 +10,7 @@
           <s>$200</s> {{ course.price | currency }}
         </div>
         <div class="col-2 p-0 text-right">
-          <a><i class="fas fa-trash-alt text-danger"></i></a>
+          <a (click)="deleteCourse(course)"><i class="fas fa-trash-alt text-danger"></i></a>
         </div>
       </li>
 

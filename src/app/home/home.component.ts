@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   onSelect(course){
-    course.selected = !course.selected;
     this.coursesService.selectCourse(course);
   }
 

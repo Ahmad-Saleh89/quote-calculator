@@ -9,9 +9,9 @@ export class CoursesService {
   courses = COURSES;
   titles = [];
 
-  optionOne = [];
-  optionTwo = [];
-  optoinThree = [];
+  optionOne = []; // index = 0
+  optionTwo = []; // index = 1
+  optoinThree = []; // index = 2
 
   selectedCourses = [this.optionOne, this.optionTwo, this.optoinThree];
 
@@ -29,12 +29,22 @@ export class CoursesService {
     return this.titles;
   }
 
-  chooseOption(x) {
+  chooseOption(x) { 
     this.index = x;
-    console.log(this.index);
+    // Loop through all options and un-select all courses
+    this.selectedCourses.map(options => {
+      if(options.length){
+        options.map(course => course.selected = false);
+      }
+    })
+    // Loop through the selected Option and reassign selected to true
+    if(this.selectedCourses[x].length){
+      this.selectedCourses[x].map(x => x.selected = true);
+    }
   }
 
   selectCourse(course){
+    course.selected = !course.selected;
     for (let val of this.selectedCourses[this.index]) {
       if(course.name === val.name) {
         this.deleteCourse(this.selectedCourses[this.index].indexOf(val));
@@ -47,6 +57,7 @@ export class CoursesService {
   }
 
   deleteCourse(course) {
+    course.selected = false;
     this.selectedCourses[this.index].splice(course, 1)
   }
 

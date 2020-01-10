@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Course } from '../../classes/course';
+import { CoursesService } from '../../services/courses.service';
+
 
 @Component({
   selector: 'option-panel',
@@ -10,9 +12,12 @@ export class OptionPanelComponent implements OnInit {
 
   @Input() courses: Course[];
 
-  constructor() { }
+  constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
   }
 
+  deleteCourse(course){
+    this.courseService.deleteCourse(course);
+  }
 }
