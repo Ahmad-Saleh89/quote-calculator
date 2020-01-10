@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'payment-plan',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentPlanComponent implements OnInit {
 
-  constructor() {}
+  selected = true;
+
+  constructor(private courseService: CoursesService) { }
 
   ngOnInit() { }
+
+  choosePlan(plan){
+    this.selected = !this.selected;
+    this.courseService.choosePlan(plan);
+  }
 }

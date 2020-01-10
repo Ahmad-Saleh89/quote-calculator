@@ -4,9 +4,9 @@
     <h4>Select your plan</h4>
   </div>
   <div class="col col-md-4">
-    <button class="btn btn-info w-100 shadow active">12 Months Plan</button>
+    <button class="btn btn-info w-100 shadow" (click)="choosePlan(12)" [class.active]="selected">12 Months Plan</button>
   </div>
   <div class="col col-md-4">
-    <button class="btn btn-info w-100 shadow">24 Months Plan</button>
+    <button class="btn btn-info w-100 shadow" (click)="choosePlan(24)" [class.active]="!selected">24 Months Plan</button>
   </div>
 </div><hr>

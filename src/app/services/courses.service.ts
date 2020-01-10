@@ -9,13 +9,15 @@ export class CoursesService {
   courses = COURSES;
   titles = [];
 
+  index = 0;
   optionOne = []; // index = 0
   optionTwo = []; // index = 1
   optoinThree = []; // index = 2
 
   selectedCourses = [this.optionOne, this.optionTwo, this.optoinThree];
 
-  index = 0;
+  // Payment Plan 12 months OR 24 months
+  plan = 12;
 
   private selectedCoursesSource = new Subject();
   selectedObs = this.selectedCoursesSource.asObservable();
@@ -30,6 +32,15 @@ export class CoursesService {
       this.titles.push(...Object.keys(course));
     }
     return this.titles;
+  }
+
+  choosePlan(plan){
+    this.plan = plan;
+    this.selectedCourses.map(options => {
+      if(options.length){
+        options.map(course => course.planPrice = course.price / this.plan);
+      }
+    });
   }
 
   chooseOption(x) {
@@ -55,6 +66,7 @@ export class CoursesService {
         return;
       }
     }
+    course.planPrice = course.price / this.plan;
     this.selectedCourses[this.index].push(course);
     this.selectedCoursesSource.next(this.selectedCourses);
   }

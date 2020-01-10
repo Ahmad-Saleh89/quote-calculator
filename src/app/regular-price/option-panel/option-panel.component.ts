@@ -31,4 +31,5 @@ export class OptionPanelComponent implements OnInit {
   clearOption(index){
     this.courseService.clearOption(index);
   }
+  
 }
