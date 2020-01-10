@@ -11,13 +11,24 @@ import { CoursesService } from '../../services/courses.service';
 export class OptionPanelComponent implements OnInit {
 
   @Input() courses: Course[];
+  @Input("index") optionIndex: Number;
+
+  activeOptionIndex = 0;
 
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
+    this.courseService.activeOption.subscribe(index => {
+      this.activeOptionIndex = index;
+      // console.log(this.selectedCourses);
+    });
   }
 
   deleteCourse(course){
     this.courseService.deleteCourse(course);
+  }
+
+  clearOption(index){
+    this.courseService.clearOption(index);
   }
 }

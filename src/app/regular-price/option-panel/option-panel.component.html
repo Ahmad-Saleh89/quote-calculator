@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngClass]="{'shadow-lg bg-color': optionIndex == activeOptionIndex}">
   <div class="card-body">
     <ul class="list-group list-group-flush">
 
@@ -27,6 +27,7 @@
     <p class="mb-1 text-info">Total Savings: <strong>$200</strong></p>
     <p class="mb-1 text-info">Pay in Full Price: <strong>$450</strong></p>
 
-    <br><a class="btn btn-danger text-white">Clear</a>
+    <br><a class="btn btn-danger text-white" (click)="clearOption(optionIndex)">Clear</a>
   </div>
 </div>
+<!-- [class.shadow-lg]="optionIndex == activeOptionIndex" -->

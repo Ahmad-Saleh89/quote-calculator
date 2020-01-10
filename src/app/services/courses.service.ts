@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { COURSES } from '../data/courses';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
@@ -20,6 +20,9 @@ export class CoursesService {
   private selectedCoursesSource = new Subject();
   selectedObs = this.selectedCoursesSource.asObservable();
 
+  private activeOptionSource = new BehaviorSubject(0);
+  activeOption = this.activeOptionSource.asObservable();
+
   constructor() { }
 
   getTitles() {
@@ -29,7 +32,8 @@ export class CoursesService {
     return this.titles;
   }
 
-  chooseOption(x) { 
+  chooseOption(x) {
+    this.activeOptionSource.next(x);
     this.index = x;
     // Loop through all options and un-select all courses
     this.selectedCourses.map(options => {
@@ -47,19 +51,21 @@ export class CoursesService {
     course.selected = !course.selected;
     for (let val of this.selectedCourses[this.index]) {
       if(course.name === val.name) {
-        this.deleteCourse(this.selectedCourses[this.index].indexOf(val));
+        this.deleteCourse(course);
         return;
       }
     }
     this.selectedCourses[this.index].push(course);
     this.selectedCoursesSource.next(this.selectedCourses);
-    // console.log(this.selectedCourses)
   }
 
-  deleteCourse(course) {
+  deleteCourse(course) { 
     course.selected ? course.selected = false : null;
-
-    this.selectedCourses[this.index].splice(course, 1);
+    this.selectedCourses[this.index].splice(this.selectedCourses[this.index].indexOf(course), 1);
   }
 
+  clearOption(x){
+    this.selectedCourses[x].map(x => x.selected = false);
+    this.selectedCourses[x] = []; 
+  }
 }
