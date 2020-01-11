@@ -20,13 +20,17 @@ export class CoursesService {
   // Default Discount
   discount = 40;
 
-  totalCost = [];
+  // Total Cost for each Option Panel , Chosen Discount, Chosen Plan
+  totalCosts = [0, 0, 0, this.discount, this.plan];
 
   private selectedCoursesSource = new Subject();
-  selectedObs = this.selectedCoursesSource.asObservable();
+  selectedCoursesObs = this.selectedCoursesSource.asObservable();
 
   private activeOptionSource = new BehaviorSubject(0);
   activeOption = this.activeOptionSource.asObservable();
+
+  private totalCostSource = new BehaviorSubject(this.totalCosts);
+  totalCostsObs = this.totalCostSource.asObservable();
 
   constructor() { }
 
@@ -42,8 +46,8 @@ export class CoursesService {
     this.updatePrices();
   }
 
-  onDiscountChange(discount) {
-    this.discount = discount;
+  onDiscountChange(discount: string) {
+    this.discount = parseInt(discount);
     this.updatePrices();
   }
 
@@ -84,19 +88,24 @@ export class CoursesService {
   }
 
   updatePrices() {
-    this.totalCost = 0;
-    this.selectedCourses.map(options => {
-      if(options.length){
-        options.map(course => {
+    this.totalCosts = [0, 0, 0, this.discount, this.plan];
+    this.selectedCourses.map((option, index) => {
+      // console.log(index)
+      if(option.length){
+        option.map(course => {
           course.planPrice = course.price / this.plan;
           course.discountPrice = course.planPrice - (course.planPrice * this.discount / 100);
+          this.totalCosts[index] += course.discountPrice;
         });
       }
     });
+    this.totalCostSource.next(this.totalCosts);
+    // console.log(this.totalCost);
   }
 
-  clearOption(x){
-    this.selectedCourses[x].map(x => x.selected = false);
-    this.selectedCourses[x] = []; 
+  clearOption(index){
+    this.selectedCourses[index].map(course => course.selected = false); 
+    this.selectedCourses[index] = [];
+    this.totalCosts[index] = 0;
   }
 }

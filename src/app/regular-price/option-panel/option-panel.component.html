@@ -18,12 +18,12 @@
     <br><br>
     <div class="text-center">
       <h3 class="text-info text-center font-weight-bold">$ 0</h3>
-      <p class="card-text text-secondary" style="font-size: 1.3rem">Per month for 24 months</p>
+      <p class="card-text text-secondary" style="font-size: 1.3rem">Per month for {{ totalCost[2] }} months</p>
     </div>
     <br>
 
     <p class="mb-1 text-info">List Price: <strong>$0</strong></p>
-    <p class="mb-1 text-info">Total Cost (40%): <strong>$0</strong></p>
+    <p class="mb-1 text-info">Total Cost ({{ totalCost[1]}}%): <strong>{{ totalCost[0] | currency }}</strong></p>
     <p class="mb-1 text-info">Total Savings: <strong>$0</strong></p>
     <p class="mb-1 text-info">Pay in Full Price: <strong>$0</strong></p>
 

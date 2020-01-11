@@ -15,15 +15,22 @@ export class RegularPriceComponent implements OnInit {
 
   index = 0;
 
-  discount = 40;
+  discount = "40";
+
+  // [Total Cost for each Option Panel , Chosen Discount, Chosen Plan]
+  totalCosts = [0, 0, 0, 40, 12];
 
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
-    this.courseService.selectedObs.subscribe(data => {
+    this.courseService.selectedCoursesObs.subscribe(data => {
       this.selectedCourses = data;
-      // console.log(this.selectedCourses);
     });
+
+    this.courseService.totalCostsObs.subscribe(costs => {
+      this.totalCosts = costs;
+    });
+
   }
 
   chooseOption(index) {

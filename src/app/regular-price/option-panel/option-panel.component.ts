@@ -15,6 +15,9 @@ export class OptionPanelComponent implements OnInit {
   // This represents the index of the selected Option Panel
   @Input("index") optionIndex: Number;
 
+  // [totalCost] = [Total Cost of this Option Panel , Chosen Discount, Chosen Plan] 
+  @Input() totalCost;
+
   // To compare the current active option with the selected one | For UI purpose only
   activeOptionIndex = 0;
 
@@ -27,7 +30,7 @@ export class OptionPanelComponent implements OnInit {
     });
   }
 
-  deleteCourse(course){
+  deleteCourse(course){ 
     this.courseService.deleteCourse(course);
   }
 
