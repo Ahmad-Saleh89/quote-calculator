@@ -9,15 +9,18 @@ export class CoursesService {
   courses = COURSES;
   titles = [];
 
+  // 0 , 1, 2 represent the index of each Option Panel
   index = 0;
-  optionOne = []; // index = 0
-  optionTwo = []; // index = 1
-  optoinThree = []; // index = 2
-
-  selectedCourses = [this.optionOne, this.optionTwo, this.optoinThree];
+  // 3 arrays -> each one represents an Option | remember we have 3 Option Panels
+  selectedCourses = [[], [], []];
 
   // Payment Plan 12 months OR 24 months
   plan = 12;
+
+  // Default Discount
+  discount = 40;
+
+  totalCost = [];
 
   private selectedCoursesSource = new Subject();
   selectedObs = this.selectedCoursesSource.asObservable();
@@ -36,11 +39,12 @@ export class CoursesService {
 
   choosePlan(plan){
     this.plan = plan;
-    this.selectedCourses.map(options => {
-      if(options.length){
-        options.map(course => course.planPrice = course.price / this.plan);
-      }
-    });
+    this.updatePrices();
+  }
+
+  onDiscountChange(discount) {
+    this.discount = discount;
+    this.updatePrices();
   }
 
   chooseOption(x) {
@@ -66,14 +70,29 @@ export class CoursesService {
         return;
       }
     }
-    course.planPrice = course.price / this.plan;
+    // course.planPrice = course.price / this.plan;
     this.selectedCourses[this.index].push(course);
     this.selectedCoursesSource.next(this.selectedCourses);
+    this.updatePrices();
+
   }
 
   deleteCourse(course) { 
     course.selected ? course.selected = false : null;
     this.selectedCourses[this.index].splice(this.selectedCourses[this.index].indexOf(course), 1);
+    this.updatePrices();
+  }
+
+  updatePrices() {
+    this.totalCost = 0;
+    this.selectedCourses.map(options => {
+      if(options.length){
+        options.map(course => {
+          course.planPrice = course.price / this.plan;
+          course.discountPrice = course.planPrice - (course.planPrice * this.discount / 100);
+        });
+      }
+    });
   }
 
   clearOption(x){

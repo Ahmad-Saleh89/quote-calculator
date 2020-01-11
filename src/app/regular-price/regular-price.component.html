@@ -3,10 +3,10 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col col-md-4 text-center">
-      <select class="form-control d-inline w-75 border-info">
-        <option value="fourty">40% Discount</option>
-        <option value="fifty">50% Discount</option>
-        <option value="sixty">60% Discount</option>
+      <select class="form-control d-inline w-75 border-info" [(ngModel)]="discount" (change)="onChange()">
+        <option value="40">40% Discount</option>
+        <option value="50">50% Discount</option>
+        <option value="60">60% Discount</option>
       </select>
     </div>
   </div><br>

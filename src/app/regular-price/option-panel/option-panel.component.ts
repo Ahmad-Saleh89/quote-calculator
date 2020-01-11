@@ -10,9 +10,12 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class OptionPanelComponent implements OnInit {
 
+  // These are the selected courses of this very Option Panel
   @Input() courses: Course[];
+  // This represents the index of the selected Option Panel
   @Input("index") optionIndex: Number;
 
+  // To compare the current active option with the selected one | For UI purpose only
   activeOptionIndex = 0;
 
   constructor(private courseService: CoursesService) { }

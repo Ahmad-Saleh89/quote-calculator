@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 
 @Component({
@@ -13,6 +15,8 @@ export class RegularPriceComponent implements OnInit {
 
   index = 0;
 
+  discount = 40;
+
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
@@ -25,5 +29,9 @@ export class RegularPriceComponent implements OnInit {
   chooseOption(index) {
     this.index = index;
     this.courseService.chooseOption(index);
+  }
+
+  onChange(){
+    this.courseService.onDiscountChange(this.discount);
   }
 }

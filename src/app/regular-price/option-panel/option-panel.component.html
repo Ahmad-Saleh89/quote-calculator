@@ -7,7 +7,7 @@
           {{ course.name }}
         </div>
         <div class="col-5 p-0">
-          <s>$200</s> {{ course.planPrice | currency }}
+          <s>{{ course.planPrice | currency }}</s> {{ course.discountPrice | currency}}
         </div>
         <div class="col-2 p-0 text-right">
           <a (click)="deleteCourse(course)"><i class="fas fa-trash-alt text-danger"></i></a>
