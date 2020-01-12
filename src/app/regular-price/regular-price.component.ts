@@ -13,22 +13,34 @@ export class RegularPriceComponent implements OnInit {
 
   selectedCourses = [];
 
+  // Index of The Option Panel
   index = 0;
 
   discount = "40";
 
-  // [Total Cost for each Option Panel , Chosen Discount, Chosen Plan]
-  totalCosts = [0, 0, 0, 40, 12];
+  // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Discount, Chosen Plan]
+  monthlyCost = [0, 0, 0, 40, 12];
+
+  listPrices = [0, 0, 0];
 
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
-    this.courseService.selectedCoursesObs.subscribe(data => {
+    this.courseService.selectedCourses$.subscribe(data => {
       this.selectedCourses = data;
+      this.listPrices = [0, 0, 0];
+      this.selectedCourses.map((option, x) => {
+        if(option.length) {
+          option.map(course => {
+            this.listPrices[x] += course.price;
+            console.log(this.listPrices)
+          })
+        }
+      })
     });
 
-    this.courseService.totalCostsObs.subscribe(costs => {
-      this.totalCosts = costs;
+    this.courseService.monthlyCost$.subscribe(costs => {
+      this.monthlyCost = costs;
     });
 
   }

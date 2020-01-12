@@ -20,17 +20,17 @@ export class CoursesService {
   // Default Discount
   discount = 40;
 
-  // Total Cost for each Option Panel , Chosen Discount, Chosen Plan
-  totalCosts = [0, 0, 0, this.discount, this.plan];
+  // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Discount, Chosen Plan]
+  monthlyCost = [0, 0, 0, this.discount, this.plan];
 
   private selectedCoursesSource = new Subject();
-  selectedCoursesObs = this.selectedCoursesSource.asObservable();
+  selectedCourses$ = this.selectedCoursesSource.asObservable();
 
   private activeOptionSource = new BehaviorSubject(0);
-  activeOption = this.activeOptionSource.asObservable();
+  activeOption$ = this.activeOptionSource.asObservable();
 
-  private totalCostSource = new BehaviorSubject(this.totalCosts);
-  totalCostsObs = this.totalCostSource.asObservable();
+  private monthlyCostSource = new BehaviorSubject(this.monthlyCost);
+  monthlyCost$ = this.monthlyCostSource.asObservable();
 
   constructor() { }
 
@@ -85,27 +85,29 @@ export class CoursesService {
     course.selected ? course.selected = false : null;
     this.selectedCourses[this.index].splice(this.selectedCourses[this.index].indexOf(course), 1);
     this.updatePrices();
+    this.selectedCoursesSource.next(this.selectedCourses);
   }
 
   updatePrices() {
-    this.totalCosts = [0, 0, 0, this.discount, this.plan];
+    this.monthlyCost = [0, 0, 0, this.discount, this.plan];
     this.selectedCourses.map((option, index) => {
       // console.log(index)
       if(option.length){
         option.map(course => {
           course.planPrice = course.price / this.plan;
           course.discountPrice = course.planPrice - (course.planPrice * this.discount / 100);
-          this.totalCosts[index] += course.discountPrice;
+          this.monthlyCost[index] += course.discountPrice;
         });
       }
     });
-    this.totalCostSource.next(this.totalCosts);
-    // console.log(this.totalCost);
+    this.monthlyCostSource.next(this.monthlyCost);
+    // console.log(this.cost);
   }
 
   clearOption(index){
     this.selectedCourses[index].map(course => course.selected = false); 
     this.selectedCourses[index] = [];
-    this.totalCosts[index] = 0;
+    this.monthlyCost[index] = 0;
+    this.selectedCoursesSource.next(this.selectedCourses);
   }
 }

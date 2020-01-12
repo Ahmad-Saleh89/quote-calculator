@@ -12,11 +12,15 @@ export class OptionPanelComponent implements OnInit {
 
   // These are the selected courses of this very Option Panel
   @Input() courses: Course[];
+
   // This represents the index of the selected Option Panel
   @Input("index") optionIndex: Number;
 
-  // [totalCost] = [Total Cost of this Option Panel , Chosen Discount, Chosen Plan] 
-  @Input() totalCost;
+  // [cost] = [Monthly Cost of this Option Panel , Chosen Discount, Chosen Plan] 
+  @Input() cost;
+
+  // Total price before any discount
+  @Input() listPrice;
 
   // To compare the current active option with the selected one | For UI purpose only
   activeOptionIndex = 0;
@@ -24,18 +28,19 @@ export class OptionPanelComponent implements OnInit {
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
-    this.courseService.activeOption.subscribe(index => {
+    this.courseService.activeOption$.subscribe(index => {
       this.activeOptionIndex = index;
       // console.log(this.selectedCourses);
     });
   }
 
-  deleteCourse(course){ 
+  deleteCourse(course){
     this.courseService.deleteCourse(course);
   }
 
   clearOption(index){
     this.courseService.clearOption(index);
+    // this.listPrice = 0;
   }
   
 }

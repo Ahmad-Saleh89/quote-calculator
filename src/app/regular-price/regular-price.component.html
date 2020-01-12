@@ -17,22 +17,31 @@
       <div class="text-center w-100">
         <button class="btn btn-info w-75 shadow active" (click)="chooseOption(0)" [class.active]="index == 0">Option 1</button>
       </div><br>
-         <!-- [totalCost] = [Total Cost of this Option Panel , Chosen Discount, Chosen Plan] -->
-      <option-panel [courses]="selectedCourses[0]" [index]="0" [totalCost]="[totalCosts[0], totalCosts[3], totalCosts[4]]"></option-panel>
+         <!-- [cost] = [Total Cost of this Option Panel , Chosen Discount, Chosen Plan] -->
+      <option-panel 
+        [courses]="selectedCourses[0]" 
+        [index]="0" [listPrice]="listPrices[0]"
+        [cost]="[monthlyCost[0], monthlyCost[3], monthlyCost[4]]"></option-panel>
     </div>
 
     <div class="col col-md-4">
       <div class="text-center w-100">
         <button class="btn btn-info w-75 shadow" (click)="chooseOption(1)" [class.active]="index == 1">Option 2</button>
       </div><br>
-      <option-panel [courses]="selectedCourses[1]" [index]="1" [totalCost]="[totalCosts[1], totalCosts[3], totalCosts[4]]"></option-panel>
+      <option-panel 
+        [courses]="selectedCourses[1]" 
+        [index]="1" [listPrice]="listPrices[1]"
+        [cost]="[monthlyCost[1], monthlyCost[3], monthlyCost[4]]"></option-panel>
     </div>
 
     <div class="col col-md-4">
       <div class="text-center w-100">
         <button class="btn btn-info w-75 shadow" (click)="chooseOption(2)" [class.active]="index == 2">Option 3</button>
       </div><br>
-      <option-panel [courses]="selectedCourses[2]" [index]="2" [totalCost]="[totalCosts[2], totalCosts[3], totalCosts[4]]"></option-panel>
+      <option-panel 
+        [courses]="selectedCourses[2]" 
+        [index]="2" [listPrice]="listPrices[2]"
+        [cost]="[monthlyCost[2], monthlyCost[3], monthlyCost[4]]"></option-panel>
     </div>
 
   </div>
