@@ -33,7 +33,6 @@ export class RegularPriceComponent implements OnInit {
         if(option.length) {
           option.map(course => {
             this.listPrices[x] += course.price;
-            console.log(this.listPrices)
           })
         }
       })
