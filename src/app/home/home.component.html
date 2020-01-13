@@ -8,7 +8,7 @@
         <ng-template ngbPanelContent>
           <div class="row">
             <div 
-              class="col col-md-3 text-center"
+              class="col col-md-3 text-center mb-3"
               *ngFor="let course of courses[x][title]">
               <button 
                 type="button" (click)="onSelect(course)" [class.active]="course.selected"
