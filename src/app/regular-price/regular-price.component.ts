@@ -16,7 +16,7 @@ export class RegularPriceComponent implements OnInit {
   // Index of The Option Panel
   index = 0;
 
-  discount = "40";
+  discount;
 
   // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Discount, Chosen Plan]
   monthlyCost = [0, 0, 0, 40, 12];
@@ -40,6 +40,7 @@ export class RegularPriceComponent implements OnInit {
 
     this.courseService.monthlyCost$.subscribe(costs => {
       this.monthlyCost = costs;
+      this.discount = this.monthlyCost[3];
     });
 
   }

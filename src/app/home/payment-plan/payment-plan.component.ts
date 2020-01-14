@@ -10,12 +10,16 @@ export class PaymentPlanComponent implements OnInit {
 
   selected = true;
 
+  plan = 12; // by default
+
   constructor(private courseService: CoursesService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.plan = this.courseService.getPlan();
+  }
 
   choosePlan(plan){
-    this.selected = !this.selected;
+    this.plan = plan;
     this.courseService.choosePlan(plan);
   }
 }

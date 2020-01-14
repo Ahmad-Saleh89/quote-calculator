@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
-import { COURSES } from '../data/courses';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -9,20 +10,23 @@ import { COURSES } from '../data/courses';
 })
 export class HomeComponent implements OnInit {
 
-  courses = COURSES;
+  courses;
 
   titles = [];
 
-  selectedCourses = [];
-
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private router: Router) { }
 
   ngOnInit() {
+    this.courses = this.coursesService.getCourses();
     this.titles = this.coursesService.getTitles();
   }
 
   onSelect(course){
-    this.coursesService.selectCourse(course);
-  }
+    if(this.router.url === '/home'){
+      this.coursesService.selectCourse(course);
+    }else{
+    console.log(this.router.url)
 
+    }
+  }
 }
