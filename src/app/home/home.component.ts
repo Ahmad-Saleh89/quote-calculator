@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
+import { SpecialsService } from '../services/specials.service';
+
 import { Router } from '@angular/router';
 
 
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
   @Input() courses;
   @Input() titles;
 
-  constructor(private courseService: CoursesService, private router: Router) { }
+  constructor(private courseService: CoursesService, private specialsService: SpecialsService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,8 +25,7 @@ export class HomeComponent implements OnInit {
     if(this.router.url === '/home'){
       this.courseService.selectCourse(course);
     }else{
-    console.log(this.router.url)
-
+      this.specialsService.selectCourse(course);
     }
   }
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
+import { SpecialsService } from '../../services/specials.service';
+
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'payment-plan',
@@ -12,14 +16,23 @@ export class PaymentPlanComponent implements OnInit {
 
   plan = 12; // by default
 
-  constructor(private courseService: CoursesService) { }
+  constructor(private courseService: CoursesService, private specialsService: SpecialsService, private router: Router) { }
 
   ngOnInit() {
-    this.plan = this.courseService.getPlan();
+    if(this.router.url === '/home'){
+      this.plan = this.courseService.getPlan();
+    }else{
+      this.plan = this.specialsService.getPlan();
+    }
   }
 
   choosePlan(plan){
     this.plan = plan;
-    this.courseService.choosePlan(plan);
+    if(this.router.url === '/home') {
+      this.courseService.choosePlan(plan);
+    }else {
+      this.specialsService.choosePlan(plan);
+    }
   }
+
 }
