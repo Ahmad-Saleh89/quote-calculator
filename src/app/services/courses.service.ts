@@ -50,7 +50,7 @@ export class CoursesService {
   getPlan() {
     return this.plan;
   }
-  
+
   choosePlan(plan){
     this.plan = plan;
     this.updatePrices();

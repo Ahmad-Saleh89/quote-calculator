@@ -11,7 +11,7 @@ import { CoursesService } from '../../services/courses.service';
 export class OptionPanelComponent implements OnInit {
 
   // These are the selected courses of this very Option Panel
-  @Input('courses') selectedCourses: Course[];
+  @Input() courses: Course[];
 
   // This represents the index of the selected Option Panel
   @Input("index") optionIndex: Number;

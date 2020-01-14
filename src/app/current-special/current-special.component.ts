@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpecialsService } from '../services/specials.service';
 
 @Component({
   selector: 'app-current-special',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrentSpecialComponent implements OnInit {
 
+  allCourses;
+  titles = [];
+
   currentMonth = new Date();
 
-  constructor() { }
+  constructor(private specialsService: SpecialsService) { }
 
   ngOnInit() {
+    this.allCourses = this.specialsService.getCourses();
+    this.titles = this.specialsService.getTitles();
   }
 
 }

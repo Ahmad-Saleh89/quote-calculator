@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../services/courses.service';
-import { BehaviorSubject } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-regular-price',
@@ -10,6 +7,9 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./regular-price.component.css']
 })
 export class RegularPriceComponent implements OnInit {
+
+  allCourses;
+  titles;
 
   selectedCourses = [];
 
@@ -37,6 +37,9 @@ export class RegularPriceComponent implements OnInit {
         }
       })
     });
+
+    this.allCourses = this.courseService.getCourses();
+    this.titles = this.courseService.getTitles();
 
     this.courseService.monthlyCost$.subscribe(costs => {
       this.monthlyCost = costs;
