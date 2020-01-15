@@ -2,13 +2,18 @@
   <div class="card-body">
     <ul class="list-group list-group-flush">
 
-      <li class="list-group-item pl-0 pr-0 d-flex" *ngFor="let course of courses">
+      <li class="list-group-item pl-0 pr-0 d-flex" *ngFor="let course of courses; index as x">
         <div class="col-5 p-0">
           {{ course.name }}
         </div>
-        <div class="col-5 p-0">
-          {{ course.specialPrice | currency}}
+        <div class="col-5 p-0" *ngIf="x % 2 == 0; else offerPrice">
+          {{ course.price | currency}}
         </div>
+        <ng-template #offerPrice>
+          <div class="col-5 p-0">
+            $50.00
+          </div>
+        </ng-template>
         <div class="col-2 p-0 text-right">
           <a (click)="deleteCourse(course)"><i class="fas fa-trash-alt text-danger"></i></a>
         </div>

@@ -17,7 +17,6 @@ export class SpecialsService {
   // Payment Plan 12 months OR 24 months
   plan = 12;
 
-
   // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Plan]
   monthlyCost = [0, 0, 0, this.plan];
 
@@ -44,20 +43,18 @@ export class SpecialsService {
     return this.titles;
   }
 
-
   getPlan() {
     return this.plan;
   }
 
   choosePlan(plan){
     this.plan = plan;
-    this.monthlyCost = [0, 0, 0, this.plan];
+    this.monthlyCost[3] = this.plan;
     this.selectedCourses.map((option, index) => {
       if(option.length){
         this.updatePrices(index);
       }
     });
-    this.monthlyCostSource.next(this.monthlyCost);
   }
 
   chooseOption(x) {

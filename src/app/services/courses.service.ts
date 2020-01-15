@@ -53,12 +53,23 @@ export class CoursesService {
 
   choosePlan(plan){
     this.plan = plan;
-    this.updatePrices();
+    this.monthlyCost[4] = this.plan;
+    this.selectedCourses.map((option, index) => {
+    if(option.length){
+        this.updatePrices(index);
+      }
+    });
   }
 
   onDiscountChange(discount: string) {
     this.discount = parseInt(discount);
-    this.updatePrices();
+    this.monthlyCost[3] = this.discount;
+
+    this.selectedCourses.map((option, index) => {
+    if(option.length){
+        this.updatePrices(index);
+      }
+    });
   }
 
   chooseOption(x) {
@@ -84,34 +95,26 @@ export class CoursesService {
         return;
       }
     }
-    // course.planPrice = course.price / this.plan;
     this.selectedCourses[this.index].push(course);
     this.selectedCoursesSource.next(this.selectedCourses);
-    this.updatePrices();
-
+    this.updatePrices(this.index);
   }
 
   deleteCourse(course) { 
     course.selected ? course.selected = false : null;
     this.selectedCourses[this.index].splice(this.selectedCourses[this.index].indexOf(course), 1);
-    this.updatePrices();
+    this.updatePrices(this.index);
     this.selectedCoursesSource.next(this.selectedCourses);
   }
 
-  updatePrices() {
-    this.monthlyCost = [0, 0, 0, this.discount, this.plan];
-    this.selectedCourses.map((option, index) => {
-      // console.log(index)
-      if(option.length){
-        option.map(course => {
-          course.planPrice = course.price / this.plan;
-          course.discountPrice = course.planPrice - (course.planPrice * this.discount / 100);
-          this.monthlyCost[index] += course.discountPrice;
-        });
-      }
+  updatePrices(index) {
+    this.monthlyCost[index] = 0;
+    this.selectedCourses[index].map((course) => {
+      course.planPrice = course.price / this.plan;
+      course.discountPrice = course.planPrice - (course.planPrice * this.discount / 100);
+      this.monthlyCost[index] += course.discountPrice;
     });
     this.monthlyCostSource.next(this.monthlyCost);
-    // console.log(this.cost);
   }
 
   clearOption(index){
