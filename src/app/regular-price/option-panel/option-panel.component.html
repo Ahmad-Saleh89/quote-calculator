@@ -10,7 +10,7 @@
           <s>{{ course.planPrice | currency }}</s> {{ course.discountPrice | currency}}
         </div>
         <div class="col-2 p-0 text-right">
-          <a (click)="deleteCourse(course)"><i class="fas fa-trash-alt text-danger"></i></a>
+          <a (click)="deleteCourse(course)" style="cursor: pointer"><i class="fas fa-trash-alt text-danger"></i></a>
         </div>
       </li>
 
@@ -18,7 +18,7 @@
     <br><br>
     <div class="text-center">
       <h3 class="text-info text-center font-weight-bold">{{ cost[0] | currency }}</h3>
-      <p class="card-text text-secondary" style="font-size: 1.3rem">Per month for {{ cost[2] }} months</p>
+      <p class="card-text text-secondary" style="font-size: 1.3rem">Per month for <span class="text-info font-weight-bold">{{ cost[2] }}</span> months</p>
     </div>
     <br>
 
