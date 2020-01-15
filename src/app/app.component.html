@@ -1,4 +1,4 @@
-<div class="jumbotron mb-0">
+<div class="jumbotron mb-0" id="component">
   <div class="container bg-white shadow rounded p-3 ">
       <h1 class="p-3 pt-4 text-center text-info">Courses Platform</h1> <hr>
       <app-header></app-header>
@@ -6,8 +6,15 @@
       <router-outlet></router-outlet>
 
       <br>
-      <p><strong>Quote Issued:</strong> {{ date | date:'MMM d, y, h:mm:ss a'}} </p>
 
+      <div class="row">
+        <div class="col col-md-6">
+          <p><strong>Quote Issued:</strong> {{ date | date:'MMM d, y, h:mm:ss a'}} </p>
+        </div>
+        <div class="col col-md-6">
+          <button class="btn btn-success pr-4 pl-4" (click)="print()">Print</button>
+        </div>
+      </div>
   </div>
 
 

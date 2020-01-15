@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   date = new Date();
+
+  constructor() {
+    setInterval(() => {
+      this.date = new Date()
+    }, 1000)
+  }
+
+  print(){
+    window.print();
+  }
 }
