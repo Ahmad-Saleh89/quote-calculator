@@ -1,11 +1,15 @@
-<div class="jumbotron">
+<div class="jumbotron mb-0">
   <div class="container bg-white shadow rounded p-3 ">
       <h1 class="p-3 pt-4 text-center text-info">Courses Platform</h1> <hr>
       <app-header></app-header>
 
       <router-outlet></router-outlet>
 
+      <br>
+      <p><strong>Quote Issued:</strong> {{ date | date:'MMM d, y, h:mm:ss a'}} </p>
+
   </div>
 
 
 </div>
+<app-footer></app-footer>

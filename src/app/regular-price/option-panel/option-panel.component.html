@@ -3,10 +3,10 @@
     <ul class="list-group list-group-flush">
 
       <li class="list-group-item pl-0 pr-0 d-flex" *ngFor="let course of courses">
-        <div class="col-5 p-0">
+        <div class="col-6 p-0">
           {{ course.name }}
         </div>
-        <div class="col-5 p-0">
+        <div class="col-4 p-0">
           <s>{{ course.planPrice | currency }}</s> {{ course.discountPrice | currency}}
         </div>
         <div class="col-2 p-0 text-right">

@@ -19,7 +19,7 @@ export class CurrentSpecialComponent implements OnInit {
   currentMonth = new Date();
 
   // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Plan]
-  monthlyCost = [0, 0, 0, 40, 12];
+  monthlyCost = [0, 0, 0, 12];
 
   listPrices = [0, 0, 0];
   constructor(private specialsService: SpecialsService) { }

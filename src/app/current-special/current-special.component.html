@@ -11,11 +11,11 @@
       <div class="text-center w-100">
         <button class="btn btn-info w-75 shadow active" (click)="chooseOption(0)" [class.active]="index == 0">Option 1</button>
       </div><br>
-         <!-- [cost] = [Total Cost of this Option Panel , Chosen Discount, Chosen Plan] -->
+         <!-- [cost] = [Total Cost of this Option Panel , Chosen Plan] -->
       <special-panel 
         [courses]="selectedCourses[0]" (click)="chooseOption(0)"
         [index]="0" [listPrice]="listPrices[0]"
-        [cost]="[monthlyCost[0], monthlyCost[3], monthlyCost[4]]"></special-panel>
+        [cost]="[monthlyCost[0], monthlyCost[3]]"></special-panel>
     </div>
 
     <div class="col col-md-4">
@@ -25,7 +25,7 @@
       <special-panel 
         [courses]="selectedCourses[1]" (click)="chooseOption(1)"
         [index]="1" [listPrice]="listPrices[1]"
-        [cost]="[monthlyCost[1], monthlyCost[3], monthlyCost[4]]"></special-panel>
+        [cost]="[monthlyCost[1], monthlyCost[3]]"></special-panel>
     </div>
 
     <div class="col col-md-4">
@@ -35,7 +35,7 @@
       <special-panel 
         [courses]="selectedCourses[2]" (click)="chooseOption(2)"
         [index]="2" [listPrice]="listPrices[2]"
-        [cost]="[monthlyCost[2], monthlyCost[3], monthlyCost[4]]"></special-panel>
+        [cost]="[monthlyCost[2], monthlyCost[3]]"></special-panel>
     </div>
 
   </div>
