@@ -18,9 +18,7 @@ export class CurrentSpecialComponent implements OnInit {
 
   currentMonth = new Date();
 
-  discount;
-
-  // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Discount, Chosen Plan]
+  // [Option 1 Monthly Cost , Option 2 Monthly Cost , Option 3 Monthly Cost , Chosen Plan]
   monthlyCost = [0, 0, 0, 40, 12];
 
   listPrices = [0, 0, 0];
@@ -44,17 +42,12 @@ export class CurrentSpecialComponent implements OnInit {
 
     this.specialsService.monthlyCost$.subscribe(costs => {
       this.monthlyCost = costs;
-      this.discount = this.monthlyCost[3];
     });
   }
 
   chooseOption(index) {
     this.index = index;
     this.specialsService.chooseOption(index);
-  }
-
-  onChange(){
-    this.specialsService.onDiscountChange(this.discount);
   }
 
 }

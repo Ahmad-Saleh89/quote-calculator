@@ -16,7 +16,7 @@ export class SpecialPanelComponent implements OnInit {
   // This represents the index of the selected Option Panel
   @Input("index") optionIndex: Number;
 
-  // [cost] = [Monthly Cost of this Option Panel , Chosen Discount, Chosen Plan] 
+  // [cost] = [Monthly Cost of this Option Panel , Chosen Plan] 
   @Input() cost;
 
   // Total price before any discount
@@ -30,7 +30,6 @@ export class SpecialPanelComponent implements OnInit {
   ngOnInit() {
     this.specialsService.activeOption$.subscribe(index => {
       this.activeOptionIndex = index;
-      // console.log(this.selectedCourses);
     });
   }
 
@@ -40,6 +39,5 @@ export class SpecialPanelComponent implements OnInit {
 
   clearOption(index){
     this.specialsService.clearOption(index);
-    // this.listPrice = 0;
   }
 }
