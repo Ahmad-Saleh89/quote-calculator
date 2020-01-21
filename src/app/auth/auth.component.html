@@ -1,4 +1,5 @@
-<div class="wrapper fadeInDown">
+<!-- <div class="wrapper fadeInDown"> -->
+<div class="wrapper">
   <div id="formContent">
     <!-- Tabs Titles -->
 
@@ -6,16 +7,33 @@
     <p>You need to login to see this page!</p>
 
     <!-- Login Form -->
-    <form>
-      <input type="email" id="email" name="email" placeholder="Email / Username" class="login">
-      <input type="password" id="password" name="password" placeholder="password" class="login">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <input 
+        type="email" id="email" name="email"
+        placeholder="Email / Username" class="login"
+        ngModel required email>
 
-      <input type="submit" class="btn btn-info" value="Log In">
+      <input 
+        type="password" id="password" name="password" 
+        placeholder="Password" class="login"
+        ngModel required minlength="6">
+
+      <input 
+        type="password" id="confirm_pw" name="confirm_pw" 
+        placeholder="Confirm Password" class="login" *ngIf="!loginMode"
+        ngModel required minlength="6">
+
+
+      <input 
+        type="submit" class="btn btn-info"
+        value="{{ loginMode ? 'Login' : 'Sign Up' }}"
+        [disabled]="!authForm.valid">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" (click)="onSwitchMode()">
+        {{ loginMode ? "Not a Member? Register Now" : "Already a Member?" }}</a>
     </div>
 
   </div>
