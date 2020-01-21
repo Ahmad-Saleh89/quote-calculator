@@ -1,9 +1,11 @@
 <!-- <div class="wrapper fadeInDown"> -->
 <div class="wrapper">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+  <div class="formContent shadow" *ngIf="!isLoading">
 
-    <!-- Icon -->
+    <div class="alert alert-danger" *ngIf="error">
+      {{ error }}
+    </div>
+
     <p>You need to login to see this page!</p>
 
     <!-- Login Form -->
@@ -37,4 +39,9 @@
     </div>
 
   </div>
+
+  <div class="formContent" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+
 </div>

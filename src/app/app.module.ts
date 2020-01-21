@@ -21,10 +21,11 @@ import { SpecialPanelComponent } from './current-special/special-panel/special-p
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule, HttpClientModule ],
-  declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent, SpecialPanelComponent, FooterComponent, AuthComponent ],
+  declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent, SpecialPanelComponent, FooterComponent, AuthComponent, SpinnerComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CoursesService, SpecialsService, AuthService]
 })
