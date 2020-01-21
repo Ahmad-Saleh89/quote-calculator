@@ -17,10 +17,11 @@ import { CoursesService } from './services/courses.service';
 import { SpecialsService } from './services/specials.service';
 import { SpecialPanelComponent } from './current-special/special-panel/special-panel.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule ],
-  declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent, SpecialPanelComponent, FooterComponent ],
+  declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent, SpecialPanelComponent, FooterComponent, AuthComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CoursesService, SpecialsService]
 })
