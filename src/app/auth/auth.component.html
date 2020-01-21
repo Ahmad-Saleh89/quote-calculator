@@ -18,10 +18,10 @@
         placeholder="Password" class="login"
         ngModel required minlength="6">
 
-      <input 
+      <!-- <input 
         type="password" id="confirm_pw" name="confirm_pw" 
         placeholder="Confirm Password" class="login" *ngIf="!loginMode"
-        ngModel required minlength="6">
+        ngModel required minlength="6"> -->
 
 
       <input 
@@ -33,7 +33,7 @@
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" (click)="onSwitchMode()">
-        {{ loginMode ? "Not a Member? Register Now" : "Already a Member?" }}</a>
+        {{ loginMode ? "Not a member? Register now" : "Already a member?" }}</a>
     </div>
 
   </div>

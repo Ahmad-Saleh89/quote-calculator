@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './routing/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,11 +20,12 @@ import { SpecialsService } from './services/specials.service';
 import { SpecialPanelComponent } from './current-special/special-panel/special-panel.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule ],
+  imports:      [ BrowserModule, FormsModule, AppRoutingModule, NgbModule, HttpClientModule ],
   declarations: [ AppComponent, HeaderComponent, HomeComponent, CurrentSpecialComponent, PageNotFoundComponent, RegularPriceComponent, PaymentPlanComponent, OptionPanelComponent, SpecialPanelComponent, FooterComponent, AuthComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [CoursesService, SpecialsService]
+  providers: [CoursesService, SpecialsService, AuthService]
 })
 export class AppModule { }
