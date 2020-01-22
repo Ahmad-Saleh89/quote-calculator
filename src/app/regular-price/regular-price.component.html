@@ -5,13 +5,19 @@
 
 <div class="container">
   <div class="row justify-content-center">
+    <div class="col col-md-4 text-left">
+      <button 
+        class="btn btn-warning w-75 shadow-sm" (click)="clearAll()"
+        [disabled]="!selectedCourses[0].length && !selectedCourses[1].length && !selectedCourses[2].length">Clear All</button>
+    </div>
     <div class="col col-md-4 text-center">
-      <select class="form-control d-inline w-75 border-info" [(ngModel)]="discount" (change)="onChange()">
+      <select class="form-control d-inline w-75 border-warning shadow-sm" [(ngModel)]="discount" (change)="onChange()">
         <option value="40">40% Discount</option>
         <option value="50">50% Discount</option>
         <option value="60">60% Discount</option>
       </select>
     </div>
+
   </div><br>
 
   <div class="row">

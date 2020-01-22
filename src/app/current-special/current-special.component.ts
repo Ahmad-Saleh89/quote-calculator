@@ -50,4 +50,8 @@ export class CurrentSpecialComponent implements OnInit {
     this.specialsService.chooseOption(index);
   }
 
+  clearAll() {
+    this.specialsService.clearAll();
+  }
+
 }

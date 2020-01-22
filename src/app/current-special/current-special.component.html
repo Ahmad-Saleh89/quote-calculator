@@ -3,6 +3,11 @@
 <h2 class="text-center">Special Offer | <span class="text-info">{{ currentMonth | date:'MMMM y' }}</span></h2>
 <br>
 <h4 class="text-center">Add a Course For <span class="text-info">$50</span> Only!</h4><br>
+<div class="w-100 text-center">
+  <button 
+    class="btn btn-warning shadow-sm" (click)="clearAll()"
+    [disabled]="!selectedCourses[0].length && !selectedCourses[1].length && !selectedCourses[2].length">Clear All</button>
+</div><br>
 <div class="container">
 
   <div class="row">

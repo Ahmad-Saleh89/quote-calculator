@@ -32,6 +32,6 @@
     <p class="mb-1 text-info">Total Savings: <strong> {{ listPrice - cost[0] | currency }}</strong></p>
     <p class="mb-1 text-info">Pay in Full Price: <strong>{{cost[0] - (cost[0] * (5 / 100 )) | currency }}</strong></p>
 
-    <br><a class="btn btn-danger text-white" (click)="clearOption(optionIndex)">Clear</a>
+    <br><button class="btn btn-danger text-white" (click)="clearOption(optionIndex)" [disabled]="!courses.length">Clear</button>
   </div>
 </div>

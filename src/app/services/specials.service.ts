@@ -111,4 +111,12 @@ export class SpecialsService {
     this.monthlyCost[index] = 0;
     this.selectedCoursesSource.next(this.selectedCourses);
   }
+
+  clearAll() {
+    this.selectedCourses.map((option, index) => {
+      if(option.length){
+          this.clearOption(index);
+        }
+    });
+  }
 }
