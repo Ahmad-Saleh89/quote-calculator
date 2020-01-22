@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService, AuthResponseData } from './auth.service';
+import { AuthService, AuthResponseData } from '../services/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -43,9 +43,9 @@ export class AuthComponent implements OnInit {
 
     authObs.subscribe(
       response => {
-        console.log(response);
+        // console.log(response);
         this.isLoading = false;
-        this.router.navigate(['/special']);
+        // this.router.navigate(['/special']);
       },
       errorMessage => {
         console.log(errorMessage);

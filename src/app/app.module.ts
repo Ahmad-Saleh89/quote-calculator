@@ -20,7 +20,7 @@ import { SpecialsService } from './services/specials.service';
 import { SpecialPanelComponent } from './current-special/special-panel/special-panel.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({

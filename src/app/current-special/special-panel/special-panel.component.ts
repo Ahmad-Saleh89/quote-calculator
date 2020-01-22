@@ -2,13 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Course } from '../../classes/course';
 import { SpecialsService } from '../../services/specials.service';
 
-
 @Component({
   selector: 'special-panel',
   templateUrl: './special-panel.component.html',
   styleUrls: ['./special-panel.component.css']
 })
-export class SpecialPanelComponent implements OnInit {
+export class SpecialPanelComponent implements OnInit{
 
   // These are the selected courses of this very Option Panel
   @Input() courses: Course[];
