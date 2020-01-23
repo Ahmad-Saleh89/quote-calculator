@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject, BehaviorSubject } from 'rxjs';
 import { User } from '../auth/user.model';
 import { Router } from '@angular/router';
+import { SpecialsService } from './specials.service';
 
 export interface AuthResponseData {
   idToken: string;
@@ -22,7 +23,7 @@ export class AuthService {
 
   private tokenExpirationTimer: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private specialsService: SpecialsService) { }
 
   // https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
   signup(email: string, password: string) {
@@ -83,6 +84,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.specialsService.clearAll();
   }
 
   autoLogout(expirationDuration: number) {
