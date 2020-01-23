@@ -14,7 +14,7 @@ export class OptionPanelComponent implements OnInit {
   @Input() courses: Course[];
 
   // This represents the index of the selected Option Panel
-  @Input("index") optionIndex: Number;
+  @Input("index") optionIndex: number;
 
   // [cost] = [Monthly Cost of this Option Panel , Chosen Discount, Chosen Plan] 
   @Input() cost;
