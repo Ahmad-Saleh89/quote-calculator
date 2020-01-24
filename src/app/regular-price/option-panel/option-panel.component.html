@@ -23,7 +23,7 @@
     <br>
 
     <p class="mb-1 text-info">List Price: <strong>{{ listPrice | currency }}</strong></p>
-    <p class="mb-1 text-info">Total Cost ({{ cost[1]}}%): <strong>{{ cost[0] * cost[2] | currency }}</strong></p>
+    <p class="mb-1 text-info">Total Cost <span class="text-secondary">({{ cost[1]}}%)</span>: <strong>{{ cost[0] * cost[2] | currency }}</strong></p>
     <p class="mb-1 text-info">Total Savings: <strong>{{ listPrice - (cost[0] * cost[2]) | currency }}</strong></p>
     <p class="mb-1 text-info">Pay in Full Price: <strong>{{ (cost[0] * cost[2]) - ((cost[0] * cost[2]) * 5/100) | currency }}</strong></p>
 
