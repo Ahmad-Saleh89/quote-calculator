@@ -8,19 +8,19 @@
     <button 
       class="btn btn-info"
       routerLink="/special"
-      routerLinkActive="active"
-      [disabled]="!isAuthenticated"><i class="fas fa-hourglass-start"></i> Current Special</button> &nbsp;
-  </div>
-  <div class="col-12 col-md-6 text-right">
-    <span>{{ myDate | date:'MMM d, y'}}</span> &nbsp;
-    <a 
-      class="btn btn-info"
-      routerLink="/login"
-      *ngIf="!isAuthenticated">Login</a>
+      routerLinkActive="active"><i class="fas fa-hourglass-start"></i> Current Special</button> &nbsp;
 
     <a 
       class="btn btn-info text-white" 
       (click)="logout()" 
       *ngIf="isAuthenticated">Logout</a>
+
+  </div>
+  <div class="col-12 col-md-6 text-right">
+    <span>{{ myDate | date:'MMM d, y'}}</span> &nbsp;
+    <!-- <a 
+      class="btn btn-info"
+      routerLink="/login"
+      *ngIf="!isAuthenticated">Login</a> -->
   </div>
 </div>
