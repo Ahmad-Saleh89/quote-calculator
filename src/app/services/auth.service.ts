@@ -58,24 +58,34 @@ export class AuthService {
   }
 
   autoLogin() {
+    // First: check if there is any user data in the local storage of the browser
     const userData: {
       email: string;
       id: string;
       _token: string;
       _tokenExpirationDate: string;
     } = JSON.parse(localStorage.getItem('userData'));
+
+    // If NOT: then Do Not Auto Login
     if (!userData) {
       return;
     }
+    // Otherwise: create a new user with the loaded data from the local storage
     const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate));
 
-    if(loadedUser.token) {
+    if(loadedUser.token) { // Remember the get token method in user.model.ts
       this.user.next(loadedUser);
       const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }
 
+  autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
+  }
+  
   logout() {
     this.user.next(null);
     this.router.navigate(['/home']);
@@ -87,14 +97,9 @@ export class AuthService {
     this.specialsService.clearAll();
   }
 
-  autoLogout(expirationDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.logout();
-    }, expirationDuration);
-  }
-
   private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    console.log(expirationDate);
     const user = new User(email, userId, token, expirationDate);
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);

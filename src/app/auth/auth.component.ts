@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
 
   loginMode = true;
   isLoading = false;
-  error: string = null;
+  errorMsg: string = null;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -32,6 +32,7 @@ export class AuthComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
 
+    // To show the spinner
     this.isLoading = true;
 
     let authObs: Observable<AuthResponseData>;
@@ -44,13 +45,12 @@ export class AuthComponent implements OnInit {
 
     authObs.subscribe(
       response => {
-        // console.log(response);
+        // If every thing went right:
         this.isLoading = false;
         this.router.navigate(['/special']);
       },
       errorMessage => {
-        console.log(errorMessage);
-        this.error = errorMessage;
+        this.errorMsg = errorMessage;
         this.isLoading = false;
       });
       
