@@ -52,6 +52,7 @@ export class CurrentSpecialComponent implements OnInit {
 
   clearAll() {
     this.specialsService.clearAll();
+    this.chooseOption(0);
   }
 
 }

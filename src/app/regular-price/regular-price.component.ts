@@ -59,5 +59,8 @@ export class RegularPriceComponent implements OnInit {
 
   clearAll() {
     this.courseService.clearAll();
+    this.chooseOption(0);
+    this.discount = 40;
+    this.onChange();
   }
 }
